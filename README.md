@@ -235,15 +235,9 @@ rather than excessive architectural complexity.
 
 # Citation
 
-If you use PekoraNet in your research, please cite:
+If you use PekoraNet in your research or projects, please consider citing this repository.
 
-```bibtex
-@article{pekoranet2026,
-  title={PekoraNet: A Lightweight Hierarchical CNN Framework for CSI Feedback Compression},
-  author={Your Name},
-  journal={TBD},
-  year={2026}
-}
+Formal publication information will be added in a future release.
 ```
 
 ---
