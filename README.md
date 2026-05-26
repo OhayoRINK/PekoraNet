@@ -102,7 +102,7 @@ Conv2d → reconstructed CSI
 Supported compression ratios:
 
 - CR = 1/4
-- CR = 1/8
+- CR = 1/8 (not use yet)
 - CR = 1/16
 - CR = 1/32
 - CR = 1/64
@@ -221,3 +221,44 @@ The combination of a single ResidualBlock and ConvTranspose2d provides the best 
 # License
 
 MIT License
+
+
+---
+
+# Research Direction
+
+PekoraNet aims to bridge the gap between:
+
+```text
+high-performance CSI reconstruction
+and
+practical wireless deployment
+```
+
+The framework focuses on:
+
+- robustness
+- lightweight design
+- deployment feasibility
+- stable reconstruction
+
+rather than excessive architectural complexity.
+
+---
+
+# Citation
+
+If you use PekoraNet in your research or projects, please consider citing this repository.
+
+Formal publication information will be added in a future release.
+
+---
+
+# Acknowledgements
+
+Inspired by:
+
+- CsiNet
+- CRNet
+- Deep learning-based CSI compression research
+- Massive MIMO feedback optimization studies
