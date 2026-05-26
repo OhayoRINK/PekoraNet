@@ -148,7 +148,7 @@ python train.py \
   --cr 1/32 \
   --epochs 1000 \
   --amp \
-  --scheduler (option)
+  --scheduler (cosine, etc)
 ```
 
 ---
@@ -213,16 +213,16 @@ The combination of a single ResidualBlock and ConvTranspose2d provides the best 
 
 # Comparison with CsiNet
 
-| Metric | CsiNet | PekoraNet |
-|---|---|---|
-| Indoor 1/4 NMSE | -17.36 dB | **-22.067 dB** |
-| Indoor 1/16 NMSE | -8.65 dB | **-12.749 dB** |
-| Indoor 1/32 NMSE | -6.24 dB | **-9.199 dB** |
-| Indoor 1/64 NMSE | -5.84 dB | **-7.048 dB** |
-| Outdoor 1/4 NMSE | -8.75 dB | **-11.566 dB** |
-| Outdoor 1/16 NMSE | -4.51 dB | **-5.169 dB** |
-| Outdoor 1/32 NMSE | -2.81 dB | **-3.329 dB** |
-| Outdoor 1/64 NMSE | -1.93 dB | **-2.259 dB** |
+| Metric | CsiNet | PekoraNet | Improvement |
+|---|---|---|---|
+| Indoor 1/4 NMSE | -17.36 dB | **-22.067 dB** | **+4.707 dB** |
+| Indoor 1/16 NMSE | -8.65 dB | **-12.749 dB** | **+4.099 dB** |
+| Indoor 1/32 NMSE | -6.24 dB | **-9.199 dB** | **+2.959 dB** |
+| Indoor 1/64 NMSE | -5.84 dB | **-7.048 dB** | **+1.208 dB** |
+| Outdoor 1/4 NMSE | -8.75 dB | **-11.566 dB** | **+2.816 dB** |
+| Outdoor 1/16 NMSE | -4.51 dB | **-5.169 dB** | **+0.659 dB** |
+| Outdoor 1/32 NMSE | -2.81 dB | **-3.329 dB** | **+0.519 dB** |
+| Outdoor 1/64 NMSE | -1.93 dB | **-2.259 dB** | **+0.329 dB** |
 
 > Note:
 > CsiNet reference values are based on the original paper.
