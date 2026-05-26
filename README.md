@@ -148,7 +148,7 @@ python train.py \
   --cr 1/32 \
   --epochs 1000 \
   --amp \
-  --scheduler (cosine, etc)
+  --scheduler (option)
 ```
 
 ---
@@ -228,6 +228,102 @@ The combination of a single ResidualBlock and ConvTranspose2d provides the best 
 > CsiNet reference values are based on the original paper.
 
 ---
+
+
+# Complexity Analysis
+
+## Parameters and FLOPs Comparison
+
+| Model | CR | Params | Encoder FLOPs | Decoder FLOPs | Total FLOPs |
+|---|---|---:|---:|---:|---:|
+| CsiNet | 1/4 | 2.103M | 3.146M | 7.602M | 10.748M |
+| CRNet | 1/4 | 2.103M | 3.146M | 7.098M | 10.244M |
+| PekoraNet | 1/4 | **2.126M** | 4.080M | 13.370M | 17.449M |
+| CsiNet | 1/16 | 529.9K | 2.359M | 5.325M | 7.684M |
+| CRNet | 1/16 | 529.6K | 1.835M | 5.263M | 7.098M |
+| PekoraNet | 1/16 | **552.4K** | 2.506M | 11.796M | 14.303M |
+| CsiNet | 1/32 | 267.7K | 2.097M | 5.063M | 7.160M |
+| CRNet | 1/32 | 267.4K | 1.704M | 4.870M | 6.574M |
+| PekoraNet | 1/32 | **290.1K** | 2.244M | 11.534M | 13.779M |
+| CsiNet | 1/64 | 136.6K | 1.966M | 4.932M | 6.898M |
+| CRNet | 1/64 | 136.7K | 1.573M | 4.739M | 6.312M |
+| PekoraNet | 1/64 | **159.0K** | 2.114M | 11.403M | 13.517M |
+
+---
+
+## Why Low Parameters Matter
+
+PekoraNet maintains a relatively small parameter count despite its hierarchical reconstruction capability.
+
+Advantages of low parameter count:
+
+- reduced memory footprint
+- lightweight model storage
+- easier deployment on mobile/edge devices
+- lower bandwidth cost for model distribution
+- practical UE-side deployment feasibility
+
+At extreme compression ratios such as CR = 1/64, PekoraNet requires only ~159K parameters while maintaining robust CSI reconstruction performance.
+
+---
+
+## Asymmetric Encoder-Decoder Design
+
+PekoraNet intentionally adopts an asymmetric computational structure:
+
+- lightweight encoder at UE side
+- reconstruction-heavy decoder at BS side
+
+This design follows the practical CSI feedback pipeline in real wireless systems:
+
+```text
+UE (mobile device)
+    ↓
+Lightweight CSI compression
+    ↓
+Feedback transmission
+    ↓
+BS (high-performance server)
+    ↓
+Robust CSI reconstruction
+```
+
+---
+
+## Why Lightweight Encoder Complexity Matters
+
+In practical FDD massive MIMO systems:
+
+- the encoder operates on resource-constrained UE devices
+- CSI feedback is repeatedly executed every coherence interval
+- battery efficiency and inference latency are critical
+
+Therefore, minimizing UE-side encoder complexity is highly important.
+
+PekoraNet keeps encoder FLOPs relatively low while shifting most reconstruction complexity to the BS-side decoder, where computational resources are significantly less constrained.
+
+This asymmetric design provides:
+
+- reduced UE-side computational burden
+- improved deployment feasibility
+- lower mobile power consumption
+- better suitability for real-world wireless systems
+
+---
+
+## Decoder-Centric Reconstruction Strategy
+
+PekoraNet allocates more FLOPs to the decoder in order to improve reconstruction robustness under aggressive compression ratios.
+
+This decoder-centric refinement strategy enables:
+
+- stronger hierarchical feature reconstruction
+- improved low-CR robustness
+- more stable NMSE performance
+- enhanced spatial detail recovery
+
+while still maintaining practical encoder complexity for UE deployment.
+
 
 # Future Work
 
