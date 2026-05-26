@@ -123,7 +123,6 @@ PekoraNet addresses these limitations through hierarchical CNN compression and r
 Supported compression ratios:
 
 - CR = 1/4
-- CR = 1/8
 - CR = 1/16
 - CR = 1/32
 - CR = 1/64
@@ -179,7 +178,7 @@ python train.py \
 Main evaluation metrics:
 
 - NMSE (Normalized Mean Square Error)
-- Cosine Similarity(not use yet)
+- Cosine Similarity (ρ)
 - Reconstruction Loss
 
 Future extensions may include:
@@ -193,48 +192,38 @@ Future extensions may include:
 
 ## Current PekoraNet Performance
 
-The following results were obtained using the current PekoraNet training pipeline.
+The following results were obtained using the current PekoraNet evaluation pipeline.
 
-| Scenario | Compression Ratio | Best NMSE (dB) | Best Epoch | Cosine Similarity |
-|---|---|---:|---:|---:|
-| Indoor | 1/4 | **-22.07** | 952 | In Progress |
-| Indoor | 1/16 | -12.75 | 903 | In Progress |
-| Indoor | 1/32 | -9.20 | 923 | In Progress |
-| Indoor | 1/64 | -7.05 | 964 | In Progress |
-| Outdoor | 1/4 | -6.65 | 934 | In Progress |
-| Outdoor | 1/16 | -3.75 | 995 | In Progress |
-| Outdoor | 1/32 | -3.33 | 966 | In Progress |
-| Outdoor | 1/64 | -2.26 | 895 | In Progress |
+| Scenario | Compression Ratio | NMSE (dB) | Cosine Similarity (ρ) |
+|---|---|---:|---:|
+| Indoor | 1/4 | **-22.067** | 0.99698 |
+| Indoor | 1/16 | -12.749 | 0.97305 |
+| Indoor | 1/32 | -9.199 | 0.93586 |
+| Indoor | 1/64 | -7.048 | 0.89288 |
+| Outdoor | 1/4 | **-11.566** | 0.96455 |
+| Outdoor | 1/16 | -5.169 | 0.82977 |
+| Outdoor | 1/32 | -3.329 | 0.72377 |
+| Outdoor | 1/64 | -2.259 | 0.62579 |
 
 ---
 
 ## Comparison with CsiNet
 
-The table below summarizes the qualitative and quantitative differences between the original CsiNet architecture and PekoraNet.
+The table below summarizes the quantitative comparison between the original CsiNet architecture and PekoraNet.
 
 | Metric | CsiNet | PekoraNet |
 |---|---|---|
-| Backbone | Fully Connected + CNN | Hierarchical CNN |
-| Spatial Hierarchy Modeling | Limited | Strong |
-| Residual Reconstruction | Minimal | Advanced Residual Refinement |
-| Low-CR Stability | Moderate | Strong |
-| Training Stabilization | Basic | AdamW + AMP + Cosine Scheduler |
-| Deployment Feasibility | Moderate | Lightweight / Practical |
-| Indoor 1/4 NMSE | -17.36 dB | **-22.07 dB** |
-| Indoor 1/16 NMSE | -8.65 dB | **-12.75 dB** |
-| Indoor 1/32 NMSE | -6.24 dB | **-9.20 dB** |
-| Indoor 1/64 NMSE | -5.84 dB | **-7.05 dB** |
-| Outdoor 1/4 NMSE | -8.75 dB | **-6.65 dB** |
-| Outdoor 1/16 NMSE | -4.51 dB | **-3.75 dB** |
-| Outdoor 1/32 NMSE | -2.81 dB | **-3.33 dB** |
-| Outdoor 1/64 NMSE | -1.93 dB | **-2.26 dB** |
-
-Outdoor reconstruction performance currently shows weaker robustness at high compression ratios compared to indoor scenarios due to more complex propagation environments and reduced spatial correlation. However, PekoraNet already surpasses the original CsiNet baseline under several low-CR outdoor settings.
-
-To address this limitation, additional training using cosine scheduler optimization and cosine-similarity-oriented stabilization is currently in progress for the outdoor dataset.
+| Indoor 1/4 NMSE | -17.36 dB | **-22.067 dB** |
+| Indoor 1/16 NMSE | -8.65 dB | **-12.749 dB** |
+| Indoor 1/32 NMSE | -6.24 dB | **-9.199 dB** |
+| Indoor 1/64 NMSE | -5.84 dB | **-7.048 dB** |
+| Outdoor 1/4 NMSE | -8.75 dB | **-11.566 dB** |
+| Outdoor 1/16 NMSE | -4.51 dB | **-5.169 dB** |
+| Outdoor 1/32 NMSE | -2.81 dB | **-3.329 dB** |
+| Outdoor 1/64 NMSE | -1.93 dB | **-2.259 dB** |
 
 > Note:
-> CsiNet reference values may vary depending on implementation details, dataset preprocessing, and training configuration.
+> CsiNet reference values are based on the original paper.
 
 ---
 
@@ -307,4 +296,3 @@ Inspired by:
 - CRNet
 - Deep learning-based CSI compression research
 - Massive MIMO feedback optimization studies
-
