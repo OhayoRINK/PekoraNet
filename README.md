@@ -69,7 +69,7 @@ Designed for realistic UE-side deployment:
 PekoraNet includes several modern training stabilization techniques:
 
 - AdamW optimizer
-- CosineAnnealingLR scheduler
+- CosineAnnealingLR scheduler(not use yet)
 - Gradient clipping
 - Mixed Precision Training (AMP)
 - BatchNorm
@@ -179,7 +179,7 @@ python train.py \
 Main evaluation metrics:
 
 - NMSE (Normalized Mean Square Error)
-- Cosine Similarity
+- Cosine Similarity(not use yet)
 - Reconstruction Loss
 
 Future extensions may include:
