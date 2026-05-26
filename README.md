@@ -6,7 +6,7 @@
 
 # Overview
 
-PekoraNet is a lightweight deep learning framework designed to reduce CSI (Channel State Information) feedback overhead in massive MIMO systems.
+PekoraNet🐇 is a lightweight deep learning framework designed to reduce CSI (Channel State Information) feedback overhead in massive MIMO systems.
 
 Unlike conventional CSI compression methods that rely heavily on shallow fully-connected architectures, PekoraNet introduces:
 
