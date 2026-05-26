@@ -23,6 +23,12 @@ The model is specifically designed for:
 
 ---
 
+# PekoraNet Architecture
+
+![PekoraNet Architecture](assets/figure.1.png)
+
+---
+
 # Key Features
 
 ## Hierarchical CSI Compression
@@ -94,6 +100,21 @@ ConvTranspose2d
 ResidualBlock
 Conv2d → reconstructed CSI
 ```
+
+---
+
+# Motivation
+
+CSI feedback overhead becomes a critical bottleneck in massive MIMO systems.
+
+Existing approaches such as CsiNet suffer from:
+
+- shallow feature extraction
+- unstable low-CR reconstruction
+- weak spatial hierarchy modeling
+- limited practical deployment considerations
+
+PekoraNet addresses these limitations through hierarchical CNN compression and residual reconstruction refinement.
 
 ---
 
@@ -176,9 +197,9 @@ python train.py \
 | Decoder Variant | Best NMSE | Best Epoch | Note |
 |---|---:|---:|---|
 | Base (RB ×1) | **-22.07 dB** | ~964 | 1000 epoch result |
-| B-1: w/o ResidualBlock | -20.33 dB | 294(max 300) | -1.74 dB degradation |
-| B-2: ResidualBlock ×2 | -13.14 dB | 292(max 300) | severe degradation |
-| B-3: plain Conv only | -15.72 dB | 293(max 300) | learned upsampling removed |
+| B-1: w/o ResidualBlock | -20.33 dB | 294 | -1.74 dB degradation |
+| B-2: ResidualBlock ×2 | -13.14 dB | 292 | severe degradation |
+| B-3: plain Conv only | -15.72 dB | 293 | learned upsampling removed |
 
 ### Key Observations
 
@@ -215,13 +236,7 @@ The combination of a single ResidualBlock and ConvTranspose2d provides the best 
 - Adaptive compression ratio support
 - Temporal CSI modeling
 - Beamforming-aware optimization
-
----
-
-# License
-
-MIT License
-
+- Semantic CSI feedback
 
 ---
 
@@ -251,6 +266,12 @@ rather than excessive architectural complexity.
 If you use PekoraNet in your research or projects, please consider citing this repository.
 
 Formal publication information will be added in a future release.
+
+---
+
+# License
+
+MIT License
 
 ---
 
