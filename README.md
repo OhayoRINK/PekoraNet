@@ -145,7 +145,7 @@ Example scenarios:
 ```python
 scenario = "indoor"
 scenario = "outdoor"
-scenario = "joint"
+scenario = "joint(not use yet)"
 ```
 
 ---
@@ -157,8 +157,9 @@ scenario = "joint"
 ```bash
 python train.py \
   --scenario indoor \
-  --cr 32 \
-  --epochs 200
+  --cr 1/32 \
+  --epochs 1000 \
+  --amp \
 ```
 
 ---
