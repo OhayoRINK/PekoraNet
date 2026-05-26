@@ -148,7 +148,7 @@ python train.py \
   --cr 1/32 \
   --epochs 1000 \
   --amp \
-  --scheduler (cosine, etc)
+  --scheduler option(cosine, etc)
 ```
 
 ---
