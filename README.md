@@ -160,6 +160,8 @@ python train.py \
   --cr 1/32 \
   --epochs 1000 \
   --amp \
+  --scheduler (cosine, etc)
+  --resume-path ./checkpoints/indoor_1_4/last.pth (resume last)
 ```
 
 ---
