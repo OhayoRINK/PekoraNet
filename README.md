@@ -197,9 +197,9 @@ python train.py \
 | Decoder Variant | Best NMSE | Best Epoch | Note |
 |---|---:|---:|---|
 | Base (RB ×1) | **-22.07 dB** | ~964 | 1000 epoch result |
-| B-1: w/o ResidualBlock | -20.33 dB | 294 | -1.74 dB degradation |
-| B-2: ResidualBlock ×2 | -13.14 dB | 292 | severe degradation |
-| B-3: plain Conv only | -15.72 dB | 293 | learned upsampling removed |
+| B-1: w/o ResidualBlock | -20.33 dB | 294 | -1.74 dB degradation (300 epoch)|
+| B-2: ResidualBlock ×2 | -13.14 dB | 292 | severe degradation (300 epoch)|
+| B-3: plain Conv only | -15.72 dB | 293 | learned upsampling removed (300 epoch)|
 
 ### Key Observations
 
