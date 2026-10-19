@@ -361,7 +361,6 @@ rather than excessive architectural complexity.
 
 If you use PekoraNet in your research or projects, please consider citing this repository.
 
-Formal publication information will be added in a future release.
 
 ---
 
